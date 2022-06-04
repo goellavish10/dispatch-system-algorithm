@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const booking = new mongoose.Schema(
   {
     jobId: {
-      type: String,
+      type: Number,
       required: true,
     },
     pickupAddress: {

@@ -6,28 +6,36 @@ const driverLocation = new mongoose.Schema(
       required: true,
     },
     currentLocation: {
-      latitude: {
-        type: Number,
+      type: {
+        type: String,
         required: true,
       },
-      longitude: {
-        type: Number,
+      coordinates: {
+        type: [Number],
         required: true,
       },
     },
     headingLocation: {
-      latitude: {
-        type: Number,
+      type: {
+        type: String,
         required: true,
       },
-      longitude: {
-        type: Number,
+      coordinates: {
+        type: [Number],
         required: true,
       },
     },
   },
   { timestamps: true }
 );
+
+driverLocation.index({
+  currentLocation: "2dsphere",
+});
+
+driverLocation.index({
+  headingLocation: "2dsphere",
+});
 
 module.exports = DriverLocation = mongoose.model(
   "driver_location",

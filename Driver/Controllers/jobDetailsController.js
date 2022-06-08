@@ -1,98 +1,29 @@
+const DriverLocation = require("../Models/DriverSchema");
+const ServiceCodeSchema = require("../Models/ServiceCodeSchema");
+const arraySort = require("array-sort");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
-
-const fs = require("fs/promises");
-const DriverLocation = require("../Models/LocationSchema");
-
-async function findCoordinates(add) {
-  let response = await fetch(
-    `http://api.positionstack.com/v1/forward?access_key=6e148bf58b59319e84e41a862353f141&query=${add}, Australia`
-  );
-
-  let coordinates = await response.json();
-
-  return coordinates;
-}
-
-module.exports.driverCoordinatesUpdate = async (req, res) => {
-  try {
-    console.log("Starting Loading Up data");
-    const sampleData = require("../newSample.json");
-
-    let newArr = [];
-
-    for (let i = 0; i < sampleData.length; i++) {
-      const coordinates = await findCoordinates(sampleData[i]["From Address"]);
-
-      if (
-        coordinates.data[0] === undefined ||
-        coordinates.data[0].latitude === undefined ||
-        coordinates.data[0].longitude === undefined
-      ) {
-        continue;
-      }
-
-      const { latitude, longitude } = coordinates.data[0];
-
-      const coordinates_ = await findCoordinates(
-        sampleData[Math.floor(Math.random() * (sampleData.length - 1) + 1)][
-          "To Address"
-        ]
-      );
-
-      if (
-        coordinates_.data[0] === undefined ||
-        coordinates_.data[0].latitude === undefined ||
-        coordinates_.data[0].longitude === undefined
-      ) {
-        continue;
-      }
-
-      const { latitude: latitude_, longitude: longitude_ } =
-        coordinates_.data[0];
-
-      const newDriverLocation = new DriverLocation({
-        driverId: i,
-        currentLocation: {
-          type: "Point",
-          coordinates: [longitude, latitude],
-        },
-        headingLocation: {
-          type: "Point",
-          coordinates: [longitude_, latitude_],
-        },
-      });
-
-      await newDriverLocation.save();
-
-      console.log(`${i} Driver Location Saved`);
-    }
-
-    await fs.writeFile("./coordinateData.json", JSON.stringify(newArr));
-    res.json({ msg: "Data written!" });
-  } catch (err) {
-    console.log(err);
-    res.json({ msg: err });
-  }
-};
-
-module.exports.receiveJobCoordinates = async (req, res) => {
+module.exports.receiveJobData = async (req, res) => {
   try {
     const {
       pickupLatitude,
       pickupLongitude,
       deliveryLatitude,
       deliveryLongitude,
+      length,
+      height,
+      width,
+      bookingId,
+      serviceCode,
     } = req.body;
 
-    const newObj = {
-      pickupLatitude,
-      pickupLongitude,
-      deliveryLatitude,
-      deliveryLongitude,
-    };
+    const cubicVolume = length * height * width;
 
-    const nearestDrivers = await DriverLocation.aggregate([
+    const vehicleChosen = await ServiceCodeSchema.find({ code: serviceCode });
+
+    console.log(vehicleChosen[0].vehicleType);
+
+    let nearestDrivers = await DriverLocation.aggregate([
       {
         $geoNear: {
           near: {
@@ -103,12 +34,61 @@ module.exports.receiveJobCoordinates = async (req, res) => {
           includeLocs: "dist.location",
           spherical: true,
           key: "currentLocation",
+          query: { vehicleType: vehicleChosen[0].vehicleType.toUpperCase() },
         },
       },
       { $limit: 10 },
     ]);
 
-    console.log(nearestDrivers);
+    let newArr = [];
+
+    for (let i = 0; i < nearestDrivers.length; i++) {
+      nearestDrivers[i].availableSpace =
+        nearestDrivers[i].availableSpace - cubicVolume;
+
+      if (nearestDrivers[i].availableSpace >= 0) {
+        newArr.push(nearestDrivers[i]);
+      }
+    }
+
+    const delivery = await fetch(
+      `http://api.positionstack.com/v1/reverse?access_key=${process.env.POSITION_KEY}&query=${deliveryLatitude},${deliveryLongitude}`
+    );
+
+    const deliveryAddress = await delivery.json();
+
+    for (let i = 0; i < newArr.length; i++) {
+      const reverseGeoCoding = await fetch(
+        `http://api.positionstack.com/v1/reverse?access_key=${process.env.POSITION_KEY}&query=${newArr[i].headingLocation.coordinates[1]},${newArr[i].headingLocation.coordinates[0]}`
+      );
+
+      const address = await reverseGeoCoding.json();
+
+      const result = await fetch(
+        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${address.data[0].label}&destinations=${deliveryAddress.data[0].label}&units=metric&key=${process.env.GCP_API}`
+      );
+
+      const { rows } = await result.json();
+
+      newArr[i].gap = rows[0].elements[0].distance.value;
+    }
+
+    const sortedArr = arraySort(newArr, ["availableSpace", "gap"]);
+
+    console.log(sortedArr);
+
+    const driver = await DriverLocation.findOneAndUpdate(
+      { _id: sortedArr[0]._id },
+      {
+        $push: { activeJobs: bookingId },
+        $set: { availableSpace: sortedArr[0].availableSpace },
+      },
+      { new: true }
+    );
+
+    console.log(driver);
+
+    res.json({ msg: "Done", driver, nearestDrivers, sortedArr });
   } catch (err) {
     console.log(err);
     res.json({ msg: err });

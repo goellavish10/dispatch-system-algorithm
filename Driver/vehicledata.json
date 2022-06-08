@@ -1,0 +1,272 @@
+[
+  {
+    "CODE": "SC",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "CAR",
+    "MAX_WEIGHT": 25,
+    "MAX_LENGTH": 0.6,
+    "MAX_WIDTH": 0.5,
+    "MAX_HEIGHT": 0.3,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "VC",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "CAR",
+    "MAX_WEIGHT": 25,
+    "MAX_LENGTH": 0.6,
+    "MAX_WIDTH": 0.5,
+    "MAX_HEIGHT": 0.3,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "EC",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "CAR",
+    "MAX_WEIGHT": 25,
+    "MAX_LENGTH": 0.6,
+    "MAX_WIDTH": 0.5,
+    "MAX_HEIGHT": 0.3,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "SW",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "STATION WAGON",
+    "MAX_WEIGHT": 150,
+    "MAX_LENGTH": 0.9,
+    "MAX_WIDTH": 0.8,
+    "MAX_HEIGHT": 0.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "VW",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "STATION WAGON",
+    "MAX_WEIGHT": 150,
+    "MAX_LENGTH": 0.9,
+    "MAX_WIDTH": 0.8,
+    "MAX_HEIGHT": 0.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "EW",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "STATION WAGON",
+    "MAX_WEIGHT": 150,
+    "MAX_LENGTH": 0.9,
+    "MAX_WIDTH": 0.8,
+    "MAX_HEIGHT": 0.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "SSV",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "SMALL VAN",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "VSV",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "SMALL VAN",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "ESV",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "SMALL VAN",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "SST",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "SMALL TRAY",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": 1
+  },
+  {
+    "CODE": "VST",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "SMALL TRAY",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": 1
+  },
+  {
+    "CODE": "EST",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "SMALL TRAY",
+    "MAX_WEIGHT": 500,
+    "MAX_LENGTH": 1.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": 1
+  },
+  {
+    "CODE": "S1V",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "1 TONNE VAN",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "V1V",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "1 TONNE VAN",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "E1V",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "1 TONNE VAN",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.2,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.2,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "S1T",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "1 TONNE TRAY",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.8,
+    "MAX_HEIGHT": 1.8,
+    "PALLETS": 2
+  },
+  {
+    "CODE": "V1T",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "1 TONNE TRAY",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.8,
+    "MAX_HEIGHT": 1.8,
+    "PALLETS": 2
+  },
+  {
+    "CODE": "E1T",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "1 TONNE TRAY",
+    "MAX_WEIGHT": 900,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.8,
+    "MAX_HEIGHT": 1.8,
+    "PALLETS": 2
+  },
+  {
+    "CODE": "S2V",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "2 TONNE VAN",
+    "MAX_WEIGHT": 1600,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "V2V",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "2 TONNE VAN",
+    "MAX_WEIGHT": 1600,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "E2V",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "2 TONNE VAN",
+    "MAX_WEIGHT": 1600,
+    "MAX_LENGTH": 2.4,
+    "MAX_WIDTH": 1.2,
+    "MAX_HEIGHT": 1.6,
+    "PALLETS": ""
+  },
+  {
+    "CODE": "S2T",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "2 TONNE TRAY",
+    "MAX_WEIGHT": 1800,
+    "MAX_LENGTH": 3.6,
+    "MAX_WIDTH": 2,
+    "MAX_HEIGHT": 2,
+    "PALLETS": 3
+  },
+  {
+    "CODE": "V2T",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "2 TONNE TRAY",
+    "MAX_WEIGHT": 1800,
+    "MAX_LENGTH": 3.6,
+    "MAX_WIDTH": 2,
+    "MAX_HEIGHT": 2,
+    "PALLETS": 3
+  },
+  {
+    "CODE": "E2T",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "2 TONNE TRAY",
+    "MAX_WEIGHT": 1800,
+    "MAX_LENGTH": 3.6,
+    "MAX_WIDTH": 2,
+    "MAX_HEIGHT": 2,
+    "PALLETS": 3
+  },
+  {
+    "CODE": "S4T",
+    "SERVICE_TYPE": "STANDARD",
+    "VEHICLE": "4 TONNE TRAY",
+    "MAX_WEIGHT": 3700,
+    "MAX_LENGTH": 4.3,
+    "MAX_WIDTH": 2.4,
+    "MAX_HEIGHT": 2.4,
+    "PALLETS": 6
+  },
+  {
+    "CODE": "V4T",
+    "SERVICE_TYPE": "VIP",
+    "VEHICLE": "4 TONNE TRAY",
+    "MAX_WEIGHT": 3700,
+    "MAX_LENGTH": 4.3,
+    "MAX_WIDTH": 2.4,
+    "MAX_HEIGHT": 2.4,
+    "PALLETS": 6
+  },
+  {
+    "CODE": "E4T",
+    "SERVICE_TYPE": "EXPRESS",
+    "VEHICLE": "4 TONNE TRAY",
+    "MAX_WEIGHT": 3700,
+    "MAX_LENGTH": 4.3,
+    "MAX_WIDTH": 2.4,
+    "MAX_HEIGHT": 2.4,
+    "PALLETS": 6
+  }
+]

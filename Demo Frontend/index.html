@@ -6,5 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Frontend</title>
   </head>
-  <body></body>
+  <body>
+    <label for="jobId">Job Id</label>
+    <input type="text" id="jobId" name="jobId" />
+
+    <label for="pickpupAdd">Pickup Suburb</label>
+    <input type="text" id="pickupAdd" name="pickupAdd" />
+
+    <label for="deliveryAdd">Delivery Suburb</label>
+    <input type="text" id="deliveryAdd" name="deliveryAdd" />
+
+    <label for="serviceCode">Service Code</label>
+    <input type="text" id="serviceCode" name="serviceCode" />
+
+    <label for="length">Length</label>
+    <input type="number" name="length" id="length" />
+
+    <label for="height">Height</label>
+    <input type="number" name="height" id="height" />
+
+    <label for="width">Width</label>
+    <input type="number" name="width" id="width" />
+
+    <button id="submit">Submit</button>
+  </body>
+
+  <script>
+    var jobId = document.getElementById("jobId");
+    var pickupAdd = document.getElementById("pickupAdd");
+    var deliveryAdd = document.getElementById("deliveryAdd");
+    var length = document.getElementById("length");
+    var height = document.getElementById("height");
+    var width = document.getElementById("width");
+
+    document.getElementById("submit").addEventListener("click", function () {
+      const data = {
+        jobId: jobId.value,
+        pickupAdd: pickupAdd.value,
+        deliveryAdd: deliveryAdd.value,
+        length: length.value,
+        height: height.value,
+        width: width.value,
+      };
+
+      // GET request to localhost:8000/api/v1/job-details
+      fetch("http://localhost:8000/api/v1/job-details", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => console.log(err));
+    });
+  </script>
 </html>

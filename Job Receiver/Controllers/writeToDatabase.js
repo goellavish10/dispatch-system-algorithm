@@ -1,7 +1,8 @@
+const SuburbCoordinate = require("../Models/SuburbCoordinateSchema");
 module.exports = {
   writeSuburbToDatabase: async (req, res) => {
     try {
-      const suburbData = req.body;
+      const suburbData = require("../NewsuburbCoordinates.json");
       for (let i = 0; i < suburbData.length; i++) {
         const suburb = suburbData[i];
         const {

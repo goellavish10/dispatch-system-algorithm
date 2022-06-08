@@ -4,6 +4,7 @@ const booking = new mongoose.Schema(
     jobId: {
       type: Number,
       required: true,
+      unique: true,
     },
     pickupAddress: {
       type: String,
@@ -12,6 +13,20 @@ const booking = new mongoose.Schema(
     deliveryAddress: {
       type: String,
       required: true,
+    },
+    serviceCode: {
+      type: String,
+    },
+    itemDimensions: {
+      length: {
+        type: Number,
+      },
+      height: {
+        type: Number,
+      },
+      width: {
+        type: Number,
+      },
     },
   },
   { timestamps: true }

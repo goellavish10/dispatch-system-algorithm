@@ -91,7 +91,4 @@ driverLocation.post("find", function (result) {
   updateAvailableSpace(result._id);
 });
 
-module.exports = DriverLocation = mongoose.model(
-  "driver_location",
-  driverLocation
-);
+module.exports = Driver = mongoose.model("driver", driverLocation);
